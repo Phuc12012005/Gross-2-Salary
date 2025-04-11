@@ -1,0 +1,13 @@
+### packages/dev_ui/pyproject.toml
+[tool.poetry]
+name = "dev-ui"
+version = "0.1.0"
+description = "Frontend UI for CAT app"
+authors = ["Benjamin Dao <daominhphuc05@gmail.com>"]
+packages = [{ include = "dev_ui", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+streamlit = "^1.32.0"
+pandas = "^2.2.1"
+requests = "^2.31.0"

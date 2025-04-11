@@ -1,0 +1,15 @@
+### src/pyproject.toml
+[tool.poetry]
+name = "cat"
+version = "0.1.0"
+description = "Backend for CAT app"
+authors = ["Benjamin Dao <daominhphuc05@gmail.com>"]
+packages = [{ include = "cat", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.110.0"
+uvicorn = "^0.29.0"
+python-dotenv = "^1.0.0"
+pandas = "^2.2.1"
+openpyxl = "^3.1.2"
