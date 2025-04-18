@@ -7,30 +7,6 @@ This app helps calculate **Net Salary** based on **Gross Salary** and the **Numb
 ## 📁 Project Structure
 
 ```
-Gross-2-Salary/
-│
-├── packages/
-│   └── dev_ui/
-│       └── src/
-│           └── dev_ui/
-│               └── ui/
-│                   ├── pages/
-│                   │   ├── Homepage.py
-│                   │   ├── GrossNetPage.py
-│                   │   └── UploadFilesPage.py
-│                   └── __init__.py
-├── app/
-│   ├── api/
-│   │   └── v1/
-│   │       └── endpoints/
-│   │           └── salary.py
-│   ├── core/
-│   │   └── logic/
-│   │       └── salary.py
-│   └── main.py
-├── requirements.txt
-└── README.md
-```
 
 ---
 
