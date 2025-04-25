@@ -1,0 +1,14 @@
+name: Build and Deploy code
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test: 
+    runs-on: ubuntu-lastest
+    steps:
+      - name: Check out code
+      - uses: actions/checkout@v4
