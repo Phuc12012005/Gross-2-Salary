@@ -38,7 +38,7 @@ pip install -r requirements.txt
 
 If you don’t have a `requirements.txt`, here’s a basic one:
 
-```txt
+```
 fastapi
 uvicorn
 streamlit
@@ -80,6 +80,24 @@ http://localhost:8501
 ```
 
 ---
+### 6. Dockerize the application
+
+Change the API URL in GrossNetPage and UploadFilesPage to 
+```
+API_URL = "http://backend:8000/net-ease/calculate"
+```
+
+This will launch the web UI in your browser at:
+
+```
+http://localhost:8501
+```
+
+Run
+```
+docker compose up --build
+```
+
 
 ## 🧠 Features
 
