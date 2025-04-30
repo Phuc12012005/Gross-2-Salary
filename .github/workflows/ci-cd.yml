@@ -46,5 +46,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/gross2salary:latest .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/gross2salary:latest
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/gross-2-salary-frontend:latest
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/gross-2-salary-backend:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/gross-2-salary-frontend:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/gross-2-salary-backend:latest
