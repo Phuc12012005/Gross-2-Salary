@@ -31,22 +31,24 @@ jobs:
           pytest
 
   build-push:
-    needs: test  # ⛓️ Only run if tests pass
+    name: Build and Push Docker Images
     runs-on: ubuntu-latest
-
+    needs: test
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Log in to DockerHub
+      - name: Build Image
+        run: |
+          docker build -f docker/frontend.Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/gross-2-salary-frontend:latest .
+          docker build -f docker/backend.Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/gross-2-salary-backend:latest .
+      - name: 🔐 Login to DockerHub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
-      - name: Build and push Docker image
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: 🚀 Push Image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/gross-2-salary-frontend:latest
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/gross-2-salary-backend:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/gross-2-salary-frontend:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/gross-2-salary-backend:latest
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/gross-2-salary-frontend:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/gross-2-salary-backend:latest
