@@ -2,7 +2,7 @@
 import streamlit as st
 import requests
 
-API_URL = "http://localhost:8000/net-ease/calculate"
+API_URL = "http://backend:8000/net-ease/calculate"
 
 def render_page():
     st.header("Gross → Net Salary Calculator")
