@@ -2,52 +2,50 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
+
+env:
+  PYTHONPATH: src
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install --no-cache-dir -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Run unit tests
-      run: |
-        export PYTHONPATH=src
-        pytest tests/
+      - name: Run tests
+        run: |
+          echo "Using PYTHONPATH=$PYTHONPATH"
+          pytest
 
-    - name: Build Docker image for backend
-      run: |
-        docker build -f docker/backend.Dockerfile -t tourist894/gross-2-salary-backend:latest .
+  build-push:
+    needs: test  # ⛓️ Only run if tests pass
+    runs-on: ubuntu-latest
 
-    - name: Build Docker image for frontend
-      run: |
-        docker build -f docker/frontend.Dockerfile -t tourist894/gross-2-salary-frontend:latest .
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Log in to DockerHub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Log in to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-    - name: Push backend Docker image to DockerHub
-      run: |
-        docker push tourist894/gross-2-salary-backend:latest
-
-    - name: Push frontend Docker image to DockerHub
-      run: |
-        docker push tourist894/gross-2-salary-frontend:latest
+      - name: Build and push Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/gross2salary:latest .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/gross2salary:latest
