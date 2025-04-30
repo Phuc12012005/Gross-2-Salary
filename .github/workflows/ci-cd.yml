@@ -41,7 +41,7 @@ jobs:
       - name: Build Image
         run: |
           docker build -f docker/frontend.Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/gross-2-salary-frontend:latest .
-          docker build -f docker/backend.Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/gross-2-salary-backend:latest .
+          docker build -f docker/backend.Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/gross-2-salary-backend:latest .
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
