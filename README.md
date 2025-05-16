@@ -157,21 +157,21 @@ API_URL = "https://gross-2-salary-backend.onrender.com/net-ease/calculate"
 ```
 Build the docker images again and push to dockerhub. You can use dockerfile in this repo.
 ### 2. Create 2 new web services
-- Choose source code from "existing image"
-- You can use my two images or your images. Both are public on dockerhub "tourist894/gross-2-salary-backend" and "tourist894/gross-2-salary-frontend"
+- Choose source code from **Existing image**
+- You can use my two images or your images. Both are public on dockerhub **tourist894/gross-2-salary-backend** and **tourist894/gross-2-salary-frontend**
 - There is no need to set env variables
-- Select "Connect"
+- Select **Connect**
 
 ### 3. Deploy
 - Choose free tier
-- Select "Deploy web service"
+- Select **Deploy web service**
 - You can check my web on: https://gross-2-salary-frontend-lastest.onrender.com/
 ## 🧠 Features
 
-- ✅ Calculate net salary from single gross input
+- ✅ Calculate net salary from gross input
 - 📁 Upload CSV or Excel to process bulk salary data
 - 📥 Download result with net salaries included
-- 🚀 FastAPI + Streamlit + Modular folder structure
+\
 
 
 ## 👨‍💻 Developed by
