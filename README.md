@@ -11,19 +11,14 @@ This app helps calculate **Net Salary** based on **Gross Salary** and the **Numb
 │  └─ dev_ui
 │     ├─ pyproject.toml
 │     └─ src
-│        ├─ __init__.py
 │        └─ dev_ui
-│           ├─ __init__.py
 │           └─ ui
-│              ├─ __init__.py
 │              └─ pages
 │                 ├─ GrossNetPage.py
 │                 ├─ Homepage.py
 │                 └─ UploadFilesPage.py
 ├─ src
-│  ├─ __intit__.py
 │  ├─ cat
-│  │  ├─ __init__.py
 │  │  ├─ api
 │  │  │  ├─ dependencies.py
 │  │  │  ├─ main.py
@@ -33,9 +28,7 @@ This app helps calculate **Net Salary** based on **Gross Salary** and the **Numb
 │  │  │  └─ config
 │  │  │     └─ base.py
 │  │  └─ core
-│  │     ├─ __init__.py
 │  │     └─ net_ease
-│  │        ├─ __init__.py
 │  │        ├─ constants.py
 │  │        ├─ dto.py
 │  │        ├─ entities.py
