@@ -91,18 +91,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-If you don’t have a `requirements.txt`, here’s a basic one:
-
-```
-fastapi
-uvicorn
-streamlit
-requests
-pandas
-openpyxl
-python-multipart
-```
-
 ---
 
 ### 4. Run the FastAPI Backend
@@ -124,7 +112,6 @@ http://localhost:8000
 ### 5. Run the Streamlit Frontend
 
 ```bash
-# Make sure to set PYTHONPATH so the UI can resolve internal modules
 PYTHONPATH=packages/dev_ui/src streamlit run packages/dev_ui/src/dev_ui/ui/pages/Homepage.py
 ```
 
@@ -141,19 +128,43 @@ Change the API URL in GrossNetPage and UploadFilesPage to
 ```
 API_URL = "http://backend:8000/net-ease/calculate"
 ```
-
+Run
+```
+docker compose up --build
+```
 This will launch the web UI in your browser at:
 
 ```
 http://localhost:8501
 ```
+## 🛠 CI/CD Steps
+### 1. Set up github secret
+DOCKERHUB_USERNAME 
+DOCKERHUB_PASSWORD
+### 2. Workflow overview
+- Checkout code
+- Install dependencies
+- Run tests
+- Build docker images
+- Push to dockerhub
 
-Run
+## Deploy on render
+### 1. Rebuild docker images
+Change the API URL in GrossNetPage and UploadFilesPage to 
 ```
-docker compose up --build
+API_URL = "https://gross-2-salary-backend.onrender.com/net-ease/calculate"
 ```
+Build the docker images again and push to dockerhub. You can use dockerfile in this repo.
+### 2. Create 2 new web services
+- Choose source code from "existing image"
+- You can use my two images or your images. Both are public on dockerhub "tourist894/gross-2-salary-backend" and "tourist894/gross-2-salary-frontend"
+- There is no need to set env variables
+- Select "Connect"
 
-
+### 3. Deploy
+- Choose free tier
+- Select "Deploy web service"
+- You can check my web on: https://gross-2-salary-frontend-lastest.onrender.com/
 ## 🧠 Features
 
 - ✅ Calculate net salary from single gross input
@@ -161,20 +172,6 @@ docker compose up --build
 - 📥 Download result with net salaries included
 - 🚀 FastAPI + Streamlit + Modular folder structure
 
----
-
-## ⚙️ Fix Import Errors
-
-Ensure these files exist to fix any import issues with Python modules:
-
-```bash
-touch packages/dev_ui/src/__init__.py
-touch packages/dev_ui/src/dev_ui/__init__.py
-touch packages/dev_ui/src/dev_ui/ui/__init__.py
-touch packages/dev_ui/src/dev_ui/ui/pages/__init__.py
-```
-
----
 
 ## 👨‍💻 Developed by
 
