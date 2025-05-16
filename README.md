@@ -127,7 +127,9 @@ Change the API URL in GrossNetPage and UploadFilesPage to
 API_URL = "https://gross-2-salary-backend.onrender.com/net-ease/calculate"
 ```
 Build the docker images again and push to dockerhub. You can use dockerfile in this repo.
-### 2. Create 2 new web services
+### 2. Choose source code
+- Create new workspace
+- Create new web services
 - Choose source code from **Existing image**
 - You can use my two images or your images. Both are public on dockerhub **tourist894/gross-2-salary-backend** and **tourist894/gross-2-salary-frontend**
 - There is no need to set env variables
